@@ -196,9 +196,9 @@ if ($selectedRoom) {
 
 $sectionName = $_GET['section'];
 
-if($sectionName === ''){
-    $sectionName = 'All Section';
-}
+    if($sectionName === ''){
+        $sectionName = 'All Section';
+    }
 
 $selectedFaculty = '';
 $selectedFacultyId = '';
