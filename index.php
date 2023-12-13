@@ -43,7 +43,7 @@ header("location:loginf.php");
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <!-- <th>Title</th> -->
+                                           
                                             <th>Time</th>
                                             <th>Weekdays</th>
                                             <th>Section</th>
@@ -71,9 +71,7 @@ header("location:loginf.php");
                                     ?>
                                         <tr>
                                             <td><?php echo $no; ?>. <?php echo $row['name']; ?></td>
-                                            <!-- <td><?php 
-                                            // echo $row['title']; 
-                                            ?></td> -->
+                                            
                                             <td><?php echo $startTime; ?> - <?php echo $endTime; ?></td>
                                             <td><?php echo $weekdayString; ?></td>
                                             <td><?php echo $row['section']; ?></td>
@@ -107,7 +105,8 @@ header("location:loginf.php");
                         <form action="" method="POST">
                             <div class="mb-3" style="display:none;">
                                 <label for="faculty">Title:</label>
-                                <input type="text" class="form-control" name="title" required>
+                                <input type="text" class="form-control" name="title" value='none' required>
+                               
                             </div>
                             <div class="mb-3">
                                 <label>Semester</label>
@@ -272,8 +271,11 @@ if (isset($_POST['save'])) {
     // Check for lunchtime conflict
     if (($start_hour == 12 && $start_minute >= 0 && $start_minute <= 59) || ($end_hour == 12 && $end_minute >= 0 && $end_minute <= 59)) {
         // There is a lunchtime conflict, handle it (e.g., show an error message)
+        // Add your lunchtime conflict handling logic here
         ?>
         <script>
+            // Show error message for lunchtime conflict
+            // Example using SweetAlert library
             Swal.fire({
                 title: 'Conflict',
                 text: 'Scheduling during lunchtime is not allowed.',
@@ -281,7 +283,7 @@ if (isset($_POST['save'])) {
                 showConfirmButton: false,
                 timer: 2000
             }).then(function() {
-                window.location.href = "";
+                window.location.href = ""; // Redirect or handle as needed
             });
         </script>
         <?php

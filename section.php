@@ -109,7 +109,7 @@ header("location:login.php");
                             </div>
                             <div class="mb-3">
                                 <label>Department</label>
-                                <select class="form-control" name="emp_id" required>
+                                <select class="form-control" name="dep_id" required>
                                 <option disabled selected>Select Department</option>
                                 <?php
                                 $sql = "SELECT * FROM department";
@@ -157,8 +157,9 @@ if(isset($_POST['save'])){
       $section = $_POST['section'];
       $course_id = $_POST['course_id'];
       $emp_id = $_POST['emp_id'];
+      $dep_id = $_POST['dep_id'];
 
-      $query = "INSERT INTO sections (section, course_id, emp_id) VALUES ('$section', '$course_id', '$emp_id')";
+      $query = "INSERT INTO sections (section, course_id, emp_id, dep_id) VALUES ('$section', '$course_id', '$emp_id', '$dep_id')";
       $query2 = mysqli_query($conn, $query);
       if($query2){
           ?>

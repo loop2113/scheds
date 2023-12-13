@@ -17,6 +17,8 @@ while ($room = $rooms->fetch_assoc()) {
     $roomOptions .= "<option value='{$room['room']}'>{$room['room']}</option>";
 }
 
+
+
 // Check if a section and room are selected
 $selectedSection = isset($_GET['section']) ? $_GET['section'] : null;
 $selectedRoom = isset($_GET['room']) ? $_GET['room'] : null;
@@ -198,6 +200,10 @@ if ($selectedRoom) {
 <?php 
 $room = $_GET['room'];
 
+
+if($room === ''){
+    $room = 'All Room';
+}
 
 $selectedDepartment = "Engineering";
 ?>

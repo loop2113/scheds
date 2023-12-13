@@ -196,10 +196,6 @@ if ($selectedRoom) {
 
 $sectionName = $_GET['section'];
 
-    if($sectionName === ''){
-        $sectionName = 'All Section';
-    }
-
 $selectedFaculty = '';
 $selectedFacultyId = '';
 $selectedDepartment = '';
@@ -243,7 +239,7 @@ if ($getSectionSchedule) {
   <form action="" method="get" class="mb-3">
         <label for="section" class="form-label itsLabel">Select Section:</label>
             <select name="section" id="section" class="form-select" onchange="this.form.submit()">
-                <option value=""><?= $sectionName ?></option>
+                <option value="" <?php echo !$selectedSection ? 'selected' : ''; ?>>All Sections</option>
                 <?php echo $sectionOptions; ?>
             </select>
         </form>

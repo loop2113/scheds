@@ -10,7 +10,6 @@ while ($faculty = $faculties->fetch_assoc()) {
     $facultyOptions .= "<option value='{$faculty['name']}'>{$faculty['name']}</option>";
 }
 $selectedFaculty = isset($_GET['faculty']) ? $_GET['faculty'] : null;
-
 $faculty = $_GET['faculty'];
 
 if($faculty === ''){

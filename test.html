@@ -1,0 +1,115 @@
+<!-- <h2 className='text-3xl font-bold mb-6'>Study Planner</h2> -->
+
+
+     <!--  <div className="task-input">
+      <input
+            className='hover:border-teal-600 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-opacity-50'
+            type="text"
+            placeholder="Add a new activity..."
+            value={newActivity}
+            onChange={(e) => setNewActivity(e.target.value)}
+          /> -->
+
+<button 
+  className='bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded'
+  onClick={addActivity}
+> 
+  Add
+</button>
+
+
+ <h2 className='text-3xl font-bold mb-6'>Study Planner</h2>
+      <div className="task-input">
+      <input
+            className='hover:border-teal-600 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-opacity-50'
+            type="text"
+            placeholder="Add a new activity..."
+            value={newActivity}
+            onChange={(e) => setNewActivity(e.target.value)}
+          />
+
+<button 
+  className='bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded'
+  onClick={addActivity}
+>
+  Add
+</button>
+
+      </div>
+      {/* Modal */}
+      {showModal && (
+  <div className="Modal">
+    <h2>{selectedActivity?.activity}</h2>
+    <h4>{selectedActivity?.username.firstname} {selectedActivity?.username.lastname}</h4>
+    <textarea
+      value={selectedActivity?.information}
+      style={{
+        maxWidth: '100%',
+        // overflow: 'hidden',
+      }}
+      onChange={(e) => {
+        const updatedInfo = e.target.value;
+        setSelectedActivity(prevActivity => ({
+          ...prevActivity,
+          information: updatedInfo,
+          
+
+          
+        }));
+      }}
+    ></textarea>
+    <p>
+      Complete:
+              <button onClick={handleToggle}>
+                {isTrue ? 'Yes' : 'No'}
+              </button>
+    </p>
+    <button onClick={handleSubmit}>Save</button>
+    <button onClick={closeModal}>Close</button>
+  </div>
+)}
+
+      <ul className="activity-list">
+        {activities.map((activity, index) => (
+          <li key={index} onClick={() => selActivity(activity._id)}>
+                
+            <button onClick={() => removeActivity(activity._id)}>Remove</button>
+          </li>
+          
+        ))}
+        {/* Modal */}
+      {showModal && (
+        <div className="Modal">
+          <center>
+          <p>Are you sure you want to remove this activity?</p>
+          <button onClick={confirmRemoveActivity}>Yes</button>
+          <button onClick={cancelRemoveActivity}>No</button>
+          </center>
+        </div>
+      )}
+        
+      </ul>
+
+      <script type="text/javascript">
+        
+            const updateClick = async (activityId) => {
+        try {
+          const updateView = await fetch(`http://localhost:3001/api/user/updateClick/${activityId}`,{
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+              
+          })
+          
+          const data = await updateView.json();
+          console.log(data.message)
+        }catch (error){
+          console.log(error);
+        }
+      }
+
+
+      </script>
+

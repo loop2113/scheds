@@ -2,7 +2,7 @@
 include 'db.php';
 
 session_start();
-// session_destroy();
+ session_destroy();
 if(!isset($_SESSION["emp_id"]))
 header("location:loginf.php");
 ?>
